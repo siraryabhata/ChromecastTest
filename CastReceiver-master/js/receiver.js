@@ -248,6 +248,8 @@ playerManager.addEventListener(
             textTrackStyle.fontStyle = trackStyle.fontStyle
             textTrackStyle.windowType = trackStyle.windowType
             textTrackStyle.windowColor = trackStyle.windowColor
+            
+            textTracksManager.setTextTrackStyle(textTrackStyle)
         }
 
   }
