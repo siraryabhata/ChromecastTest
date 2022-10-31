@@ -238,7 +238,7 @@ playerManager.addEventListener(
         } else if(json.action==="SUBTITLE_STYLE") {
             const trackStyle = json.textTrackStyle
             const textTracksManager = playerManager.getTextTracksManager();
-            const textTrackStyle = new TextTrackStyle();
+            const textTrackStyle = new cast.framework.messages.TextTrackStyle();
             textTrackStyle.backgroundColor = trackStyle.backgroundColor
             textTrackStyle.foregroundColor = trackStyle.foregroundColor
             textTrackStyle.fontScale = trackStyle.fontScale
