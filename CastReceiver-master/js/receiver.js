@@ -260,8 +260,10 @@ playerManager.addEventListener(
 //             video.playbackRate = json.speed;
 //           }
            if(globalLoadRequestData){
-             globalLoadRequestData.playbackRate=json.speed;
-             playerManager.load(globalLoadRequestData);
+             const s=new cast.framework.messages.SetPlaybackRateRequestData();  
+             s.playbackRate=json.speed;
+             s.requestId=globalLoadRequestData.requestId;
+             playerManager.load(s);
             }
        }
 
