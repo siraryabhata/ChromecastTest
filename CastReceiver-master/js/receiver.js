@@ -37,6 +37,7 @@ const playerManager = context.getPlayerManager();
 
 
 const LOG_RECEIVER_TAG = 'Receiver';
+var globalLoadRequestData;
 
 /**
  * Debug Logger
@@ -252,6 +253,17 @@ playerManager.addEventListener(
             
             textTracksManager.setTextTrackStyle(textTrackStyle)
         }
+       else if(json.action==="PLAYBACK_SPEED"){
+
+//          const video = document.getElementById('castMediaElement');
+//          if(video!=undefined){
+//             video.playbackRate = json.speed;
+//           }
+           if(globalLoadRequestData){
+             globalLoadRequestData.playbackRate=json.speed;
+             playerManager.load(globalLoadRequestData);
+            }
+       }
 
   }
 
@@ -374,6 +386,7 @@ playerManager.setMessageInterceptor(
   cast.framework.messages.MessageType.LOAD, loadRequestData => {
     castDebugLogger.debug(LOG_RECEIVER_TAG,
       `loadRequestData: ${JSON.stringify(loadRequestData)}`);
+      globalLoadRequestData=loadRequestData;
      loadRequestData.media.hlsSegmentFormat = cast.framework.messages.HlsSegmentFormat.TS;  
 //       loadRequestData.media.hlsVideoSegmentFormat="fmp4";
 
