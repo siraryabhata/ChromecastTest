@@ -405,7 +405,7 @@ playerManager.setMessageInterceptor(
 //     loadRequestData.media.contentType = 'application/dash+xml';
 //                  loadRequestData.media.streamType = cast.framework.messages.StreamType.LIVE;
 //   }
-
+    loadRequestData.playbackRate=2.0;
     return loadRequestData;
 
     // Add breaks to the media information and set the contentUrl
