@@ -255,16 +255,16 @@ playerManager.addEventListener(
         }
        else if(json.action==="PLAYBACK_SPEED"){
 
-//          const video = document.getElementById('castMediaElement');
-//          if(video!=undefined){
-//             video.playbackRate = json.speed;
-//           }
-           if(globalLoadRequestData){
-             const s=new cast.framework.messages.SetPlaybackRateRequestData();  
-             s.playbackRate=json.speed;
-             s.requestId=globalLoadRequestData.requestId;
-             playerManager.load(s);
-            }
+         const video = document.getElementById('castMediaElement');
+         if(video){
+            video.playbackRate = json.speed;
+         }
+         else if(globalLoadRequestData){
+//              const s=new cast.framework.messages.SetPlaybackRateRequestData();  
+             globalLoadRequestData.playbackRate=json.speed;
+//              globalLoadRequestData.requestId=globalLoadRequestData.requestId;
+             playerManager.load(globalLoadRequestData);
+          }
        }
 
   }
