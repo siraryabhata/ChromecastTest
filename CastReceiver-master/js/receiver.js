@@ -389,8 +389,9 @@ playerManager.setMessageInterceptor(
     castDebugLogger.debug(LOG_RECEIVER_TAG,
       `loadRequestData: ${JSON.stringify(loadRequestData)}`);
       globalLoadRequestData=loadRequestData;
-     loadRequestData.media.hlsSegmentFormat = cast.framework.messages.HlsSegmentFormat.TS;  
-//       loadRequestData.media.hlsVideoSegmentFormat="fmp4";
+//      loadRequestData.media.hlsSegmentFormat = cast.framework.messages.HlsSegmentFormat.TS;  
+      loadRequestData.media.hlsSegmentFormat = cast.framework.messages.HlsSegmentFormat.FMP4;  
+      loadRequestData.media.hlsVideoSegmentFormat=cast.framework.messages.HlsSegmentFormat.FMP4;
 
     // If the loadRequestData is incomplete return an error message
     if (!loadRequestData || !loadRequestData.media) {
