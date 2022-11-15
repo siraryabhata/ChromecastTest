@@ -262,10 +262,11 @@ playerManager.addEventListener(
             video.playbackRate = json.speed;
          }
          else if(globalLoadRequestData){
-//              const s=new cast.framework.messages.SetPlaybackRateRequestData();  
-             globalLoadRequestData.playbackRate=json.speed;
-//              globalLoadRequestData.requestId=globalLoadRequestData.requestId;
-             playerManager.load(globalLoadRequestData);
+             const s=new cast.framework.messages.SetPlaybackRateRequestData();  
+             s.playbackRate=json.speed;
+             s.requestId=globalLoadRequestData.requestId;
+             s.mediaSessionId=globalLoadRequestData.mediaSessionId;
+             playerManager.load(s);
           }
        }
 
