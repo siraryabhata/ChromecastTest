@@ -298,14 +298,14 @@ context.addCustomMessageListener(CUSTOM_CHANNEL, function(customEvent) {
  */
 playerManager.addEventListener(
   cast.framework.events.EventType.ERROR, (event) => {
-    if (event.detailedErrorCode == cast.framework.events.DetailedErrorCode.HLS_NETWORK_INVALID_SEGMENT) {
-      // Failed parsing HLS fragments. Will retry with HLS segments format set to 'TS'
-      setHlsSegmentFormat = true;
-      if(globalLoadRequestData){
-      playerManager.load(globalLoadRequestData);
-      }
+//     if (event.detailedErrorCode == cast.framework.events.DetailedErrorCode.HLS_NETWORK_INVALID_SEGMENT) {
+//       // Failed parsing HLS fragments. Will retry with HLS segments format set to 'TS'
+//       setHlsSegmentFormat = true;
+//       if(globalLoadRequestData){
+//       playerManager.load(globalLoadRequestData);
+//       }
   
-    }
+//     }
       
     castDebugLogger.error(LOG_RECEIVER_TAG,
       'Detailed Error Code - ' + event.detailedErrorCode);
@@ -403,11 +403,11 @@ playerManager.setMessageInterceptor(
       globalLoadRequestData=loadRequestData;
 //      loadRequestData.media.hlsSegmentFormat = cast.framework.messages.HlsSegmentFormat.TS;  
       
-     if (setHlsSegmentFormat) {
-         loadRequestData.media.hlsSegmentFormat = cast.framework.messages.HlsSegmentFormat.FMP4;  
-      loadRequestData.media.hlsVideoSegmentFormat=cast.framework.messages.HlsSegmentFormat.FMP4;
-      setHlsSegmentFormat = false;
-    }
+//      if (setHlsSegmentFormat) {
+//          loadRequestData.media.hlsSegmentFormat = cast.framework.messages.HlsSegmentFormat.FMP4;  
+//       loadRequestData.media.hlsVideoSegmentFormat=cast.framework.messages.HlsSegmentFormat.FMP4;
+//       setHlsSegmentFormat = false;
+//     }
 
     // If the loadRequestData is incomplete return an error message
     if (!loadRequestData || !loadRequestData.media) {
