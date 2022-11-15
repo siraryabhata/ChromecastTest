@@ -257,17 +257,25 @@ playerManager.addEventListener(
         }
        else if(json.action==="PLAYBACK_SPEED"){
 
-         const video = document.getElementById('castMediaElement');
-         if(video){
-            video.playbackRate = json.speed;
+//          const video = document.getElementById('castMediaElement');
+//          if(video){
+//             video.playbackRate = json.speed;
+//          }
+//          else if(globalLoadRequestData){
+//              const s=new cast.framework.messages.SetPlaybackRateRequestData();  
+//              s.playbackRate=json.speed;
+//              s.requestId=globalLoadRequestData.requestId;
+//              s.mediaSessionId=globalLoadRequestData.mediaSessionId;
+//              playerManager.load(s);
+//           }
+         if(  globalLoadRequestData){
+        context.sendCustomMessage("urn:x-cast:com.google.cast.media",undefined,{
+        type: "SET_PLAYBACK_RATE",
+        playbackRate: json.speed,
+        mediaSessionId: globalLoadRequestData.mediaSessionId,
+        requestId: 2
+        });
          }
-         else if(globalLoadRequestData){
-             const s=new cast.framework.messages.SetPlaybackRateRequestData();  
-             s.playbackRate=json.speed;
-             s.requestId=globalLoadRequestData.requestId;
-             s.mediaSessionId=globalLoadRequestData.mediaSessionId;
-             playerManager.load(s);
-          }
        }
 
   }
