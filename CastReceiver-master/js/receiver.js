@@ -268,14 +268,14 @@ playerManager.addEventListener(
 //              s.mediaSessionId=globalLoadRequestData.mediaSessionId;
 //              playerManager.load(s);
 //           }
-         if(  globalLoadRequestData){
-        context.sendCustomMessage("urn:x-cast:com.google.cast.media",undefined,{
-        type: "SET_PLAYBACK_RATE",
-        playbackRate: json.speed,
-        mediaSessionId: globalLoadRequestData.mediaSessionId,
-        requestId: 2
-        });
-         }
+//          if(  globalLoadRequestData){
+//         context.sendCustomMessage("urn:x-cast:com.google.cast.media",undefined,{
+//         type: "SET_PLAYBACK_RATE",
+//         playbackRate: json.speed,
+//         mediaSessionId: globalLoadRequestData.mediaSessionId,
+//         requestId: 2
+//         });
+//          }
        }
 
   }
@@ -408,7 +408,8 @@ playerManager.setMessageInterceptor(
   cast.framework.messages.MessageType.LOAD, loadRequestData => {
     castDebugLogger.debug(LOG_RECEIVER_TAG,
       `loadRequestData: ${JSON.stringify(loadRequestData)}`);
-      loadRequestData.mediaSessionId=890;
+//       loadRequestData.mediaSessionId=890;
+      loadRequestData.requestId=190;
       globalLoadRequestData=loadRequestData;
 //      loadRequestData.media.hlsSegmentFormat = cast.framework.messages.HlsSegmentFormat.TS;  
       
