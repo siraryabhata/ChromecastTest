@@ -409,6 +409,9 @@ playerManager.setMessageInterceptor(
   cast.framework.messages.MessageType.LOAD, loadRequestData => {
     castDebugLogger.debug(LOG_RECEIVER_TAG,
       `loadRequestData: ${JSON.stringify(loadRequestData)}`);
+      context.sendCustomMessage(CUSTOM_CHANNEL,undefined,{
+           requestId: loadRequestData.requestId
+        });  
 //       loadRequestData.mediaSessionId=890;
 //       loadRequestData.requestId=190;
       globalLoadRequestData=loadRequestData;
@@ -498,6 +501,10 @@ playerDataBinder.addEventListener(
     if (!e.value) return;
     console.log(playerData.mediaSessionId);
     mediaSessionId=playerData.mediaSessionId;
+      context.sendCustomMessage(CUSTOM_CHANNEL,undefined,{
+        mediaSessionId: mediaSessionId
+        });  
+      
 // 	const data = JSON.stringify({"chapterId":playerData.media.customData.chapterId,
 //     "position":Math.trunc(e.value*1000),
 //     "duration":Math.trunc(playerData.duration*1000)})
