@@ -39,6 +39,7 @@ const playerManager = context.getPlayerManager();
 const LOG_RECEIVER_TAG = 'Receiver';
 var globalLoadRequestData;
 var setHlsSegmentFormat = false;
+var mediaSessionId=1;
 
 
 /**
@@ -268,14 +269,14 @@ playerManager.addEventListener(
 //              s.mediaSessionId=globalLoadRequestData.mediaSessionId;
 //              playerManager.load(s);
 //           }
-//          if(  globalLoadRequestData){
-//         context.sendCustomMessage("urn:x-cast:com.google.cast.media",undefined,{
-//         type: "SET_PLAYBACK_RATE",
-//         playbackRate: json.speed,
-//         mediaSessionId: globalLoadRequestData.mediaSessionId,
-//         requestId: 2
-//         });
-//          }
+         if(globalLoadRequestData){
+        context.sendCustomMessage("urn:x-cast:com.google.cast.media",undefined,{
+        type: "SET_PLAYBACK_RATE",
+        playbackRate: json.speed,
+        mediaSessionId: mediaSessionId,
+        requestId: globalLoadRequestData.requestId
+        });
+         }
        }
 
   }
@@ -408,8 +409,8 @@ playerManager.setMessageInterceptor(
   cast.framework.messages.MessageType.LOAD, loadRequestData => {
     castDebugLogger.debug(LOG_RECEIVER_TAG,
       `loadRequestData: ${JSON.stringify(loadRequestData)}`);
-      loadRequestData.mediaSessionId=890;
-      loadRequestData.requestId=190;
+//       loadRequestData.mediaSessionId=890;
+//       loadRequestData.requestId=190;
       globalLoadRequestData=loadRequestData;
 //      loadRequestData.media.hlsSegmentFormat = cast.framework.messages.HlsSegmentFormat.TS;  
       
@@ -485,6 +486,24 @@ playerManager.setMessageInterceptor(
     // });
   }
 );
+
+
+
+const playerData = new cast.framework.ui.PlayerData();
+const playerDataBinder = new cast.framework.ui.PlayerDataBinder(playerData);
+  
+playerDataBinder.addEventListener(
+  cast.framework.ui.PlayerDataEventType.MEDIA_SESSION_ID_CHANGED,
+  (e) => {
+    if (!e.value) return;
+    console.log(playerData.mediaSessionId);
+    mediaSessionId=playerData.mediaSessionId;
+// 	const data = JSON.stringify({"chapterId":playerData.media.customData.chapterId,
+//     "position":Math.trunc(e.value*1000),
+//     "duration":Math.trunc(playerData.duration*1000)})
+// 	makeRequest("http://192.168.1.100:8383/watching/set",data)
+  });
+
 
 const playbackConfig = new cast.framework.PlaybackConfig();
 
