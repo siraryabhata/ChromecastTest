@@ -408,7 +408,7 @@ playerManager.setMessageInterceptor(
   cast.framework.messages.MessageType.LOAD, loadRequestData => {
     castDebugLogger.debug(LOG_RECEIVER_TAG,
       `loadRequestData: ${JSON.stringify(loadRequestData)}`);
-//       loadRequestData.mediaSessionId=890;
+      loadRequestData.mediaSessionId=890;
       loadRequestData.requestId=190;
       globalLoadRequestData=loadRequestData;
 //      loadRequestData.media.hlsSegmentFormat = cast.framework.messages.HlsSegmentFormat.TS;  
