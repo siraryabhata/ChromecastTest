@@ -424,9 +424,9 @@ playerManager.setMessageInterceptor(
         });  
       
         const customData = loadRequestData.media.customData;
-    if (customData !== undefined) {
+    if (customData != undefined) {
     const hlsSegmentFormat = customData.hlsSegmentFormat;
-    if (hlsSegmentFormat !== undefined){
+    if (hlsSegmentFormat != undefined){
 
     switch (hlsSegmentFormat) {
         case HlsSegmentFormat.AAC:
