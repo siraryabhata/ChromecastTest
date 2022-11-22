@@ -423,36 +423,43 @@ playerManager.setMessageInterceptor(
            requestId: loadRequestData.requestId
         });  
       
-        const customData = loadRequestData.media.customData;
-    if (customData != undefined) {
-    const hlsSegmentFormat = customData.hlsSegmentFormat;
-    if (hlsSegmentFormat != undefined){
+    if(loadRequestData.media.contentId.includes("//peertube."))  {
+           loadRequestData.media.hlsSegmentFormat = cast.framework.messages.HlsSegmentFormat.FMP4;  
+      loadRequestData.media.hlsVideoSegmentFormat=cast.framework.messages.HlsSegmentFormat.FMP4;
+    
+    }else if(loadRequestData.media.contentId.includes("//ted."){
+        loadRequestData.media.hlsSegmentFormat = cast.framework.messages.HlsSegmentFormat.TS;
+    }
+//     const customData = loadRequestData.media.customData;
+//     if (customData != undefined) {
+//     const hlsSegmentFormat = customData.hlsSegmentFormat;
+//     if (hlsSegmentFormat != undefined){
 
-    switch (hlsSegmentFormat) {
-        case HlsSegmentFormat.AAC:
-            loadRequestData.media.hlsSegmentFormat = cast.framework.messages.HlsSegmentFormat.AAC;
-            break;
-        case HlsSegmentFormat.AC3:
-            loadRequestData.media.hlsSegmentFormat = cast.framework.messages.HlsSegmentFormat.AC3;
-            break;
-        case HlsSegmentFormat.MP3:
-            loadRequestData.media.hlsSegmentFormat = cast.framework.messages.HlsSegmentFormat.MP3;
-            break;
-        case HlsSegmentFormat.TS:
-            loadRequestData.media.hlsSegmentFormat = cast.framework.messages.HlsSegmentFormat.TS;
-            break;
-        case HlsSegmentFormat.TS_AAC:
-            loadRequestData.media.hlsSegmentFormat = cast.framework.messages.HlsSegmentFormat.TS_AAC;
-            break;
-        case HlsSegmentFormat.E_AC3:
-            loadRequestData.media.hlsSegmentFormat = cast.framework.messages.HlsSegmentFormat.E_AC3;
-            break;
-        case HlsSegmentFormat.FMP4:
-            loadRequestData.media.hlsSegmentFormat = cast.framework.messages.HlsSegmentFormat.FMP4;
-            break;
-    }
-    }
-  }   
+//     switch (hlsSegmentFormat) {
+//         case HlsSegmentFormat.AAC:
+//             loadRequestData.media.hlsSegmentFormat = cast.framework.messages.HlsSegmentFormat.AAC;
+//             break;
+//         case HlsSegmentFormat.AC3:
+//             loadRequestData.media.hlsSegmentFormat = cast.framework.messages.HlsSegmentFormat.AC3;
+//             break;
+//         case HlsSegmentFormat.MP3:
+//             loadRequestData.media.hlsSegmentFormat = cast.framework.messages.HlsSegmentFormat.MP3;
+//             break;
+//         case HlsSegmentFormat.TS:
+//             loadRequestData.media.hlsSegmentFormat = cast.framework.messages.HlsSegmentFormat.TS;
+//             break;
+//         case HlsSegmentFormat.TS_AAC:
+//             loadRequestData.media.hlsSegmentFormat = cast.framework.messages.HlsSegmentFormat.TS_AAC;
+//             break;
+//         case HlsSegmentFormat.E_AC3:
+//             loadRequestData.media.hlsSegmentFormat = cast.framework.messages.HlsSegmentFormat.E_AC3;
+//             break;
+//         case HlsSegmentFormat.FMP4:
+//             loadRequestData.media.hlsSegmentFormat = cast.framework.messages.HlsSegmentFormat.FMP4;
+//             break;
+//     }
+//     }
+//   }   
 //       loadRequestData.mediaSessionId=890;
 //       loadRequestData.requestId=190;
       globalLoadRequestData=loadRequestData;
