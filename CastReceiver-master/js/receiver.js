@@ -429,6 +429,8 @@ playerManager.setMessageInterceptor(
     
     }else if(loadRequestData.media.contentId.includes(".ted.")){
         loadRequestData.media.hlsSegmentFormat = cast.framework.messages.HlsSegmentFormat.TS;
+    }else if(loadRequestData.media.contentId.includes(".gmplayer.")){
+        loadRequestData.media.hlsSegmentFormat = cast.framework.messages.HlsSegmentFormat.TS;
     }
 //     const customData = loadRequestData.media.customData;
 //     if (customData != undefined) {
