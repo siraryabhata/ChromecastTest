@@ -427,6 +427,8 @@ playerManager.setMessageInterceptor(
            loadRequestData.media.hlsSegmentFormat = cast.framework.messages.HlsSegmentFormat.FMP4;  
       loadRequestData.media.hlsVideoSegmentFormat=cast.framework.messages.HlsSegmentFormat.FMP4;
     
+    }else if(loadRequestData.media.contentId.includes(".ted.")){
+        loadRequestData.media.hlsSegmentFormat = cast.framework.messages.HlsSegmentFormat.TS;
     }else {
         loadRequestData.media.hlsSegmentFormat = cast.framework.messages.HlsSegmentFormat.TS;
     }
