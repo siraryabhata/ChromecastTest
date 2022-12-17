@@ -431,7 +431,7 @@ playerManager.setMessageInterceptor(
         loadRequestData.media.hlsSegmentFormat = cast.framework.messages.HlsSegmentFormat.TS;
     }
       else {
-        loadRequestData.media.hlsSegmentFormat = cast.framework.messages.HlsSegmentFormat.TS;
+        loadRequestData.media.hlsSegmentFormat = cast.framework.messages.HlsSegmentFormat.AAC;
     }
 //     const customData = loadRequestData.media.customData;
 //     if (customData != undefined) {
