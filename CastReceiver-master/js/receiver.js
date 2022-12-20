@@ -430,9 +430,9 @@ playerManager.setMessageInterceptor(
     }else if(loadRequestData.media.contentId.includes(".ted.")){
         loadRequestData.media.hlsSegmentFormat = cast.framework.messages.HlsSegmentFormat.TS;
     }
-      else {
-        loadRequestData.media.hlsSegmentFormat = cast.framework.messages.HlsSegmentFormat.AAC;
-    }
+//       else {
+//         loadRequestData.media.hlsSegmentFormat = cast.framework.messages.HlsSegmentFormat.AAC;
+//     }
 //     const customData = loadRequestData.media.customData;
 //     if (customData != undefined) {
 //     const hlsSegmentFormat = customData.hlsSegmentFormat;
